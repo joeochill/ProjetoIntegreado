@@ -1,20 +1,22 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { MdlModule } from '@angular-mdl/core';
 
 import { AppComponent } from './app.component';
+import { MainModule } from './main/main.module';
 import { AppRoutingModule } from './routing/app-routing.module';
-import { EmpreRoutingModule } from './routing/empre-routing.module';
-import { EmpresaModule } from './empresa/empresa.module';
+import { MainRoutingModule } from './routing/main-routing.module';
 
 @NgModule({
   declarations: [
     AppComponent
   ],
   imports: [
-    AppRoutingModule,
-    EmpreRoutingModule,
     BrowserModule,
-    EmpresaModule
+    AppRoutingModule,
+    MainRoutingModule,
+    MainModule,
+    MdlModule
   ],
   bootstrap: [AppComponent]
 })

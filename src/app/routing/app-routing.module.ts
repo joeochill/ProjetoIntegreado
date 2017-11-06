@@ -3,18 +3,17 @@ import { RouterModule, Routes } from '@angular/router';
 
 const appRoutes: Routes =[
     {
-        path: '',
-        redirectTo: '/login',
+        path:'',
+        redirectTo: 'main',
         pathMatch: 'full'
     }
-] 
-
-    @NgModule({
-        imports: [
-            RouterModule.forRoot(appRoutes)
-        ],
-        exports: [
-            RouterModule
-        ]
+]
+@NgModule({
+    imports:[
+        RouterModule.forRoot(appRoutes)
+    ],
+    exports:[
+        RouterModule
+    ]
 })
 export class AppRoutingModule{}

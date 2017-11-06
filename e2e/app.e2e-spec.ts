@@ -1,10 +1,10 @@
-import { AngularTesisPage } from './app.po';
+import { TesisAngularPage } from './app.po';
 
-describe('angular-tesis App', () => {
-  let page: AngularTesisPage;
+describe('tesis-angular App', () => {
+  let page: TesisAngularPage;
 
   beforeEach(() => {
-    page = new AngularTesisPage();
+    page = new TesisAngularPage();
   });
 
   it('should display welcome message', () => {
