@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MdlModule } from '@angular-mdl/core';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { MainModule } from './main/main.module';
@@ -16,7 +18,9 @@ import { MainRoutingModule } from './routing/main-routing.module';
     AppRoutingModule,
     MainRoutingModule,
     MainModule,
-    MdlModule
+    MdlModule,
+    FormsModule,
+    HttpModule
   ],
   bootstrap: [AppComponent]
 })

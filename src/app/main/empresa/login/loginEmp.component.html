@@ -12,10 +12,11 @@
 		<h1>bem-vindo</h1>
 		 
 		<form class="form">
-			<input type="text" placeholder="Username">
-			<input type="password" placeholder="Password">
-			<button type="submit" id="login-button" routerLink="/mainEmp">Login</button>
-			<button (click)="modalCadastro.show()">cadastrar</button>
+			<input type="text" (blur)="getUSu()" name="usuarioLogin" [(ngModel)]="usuLogin.usuario" placeholder="Username">
+			<input type="password" name="contrasenhaLogin" [(ngModel)]="usuLogin.contrasenha" placeholder="Password">
+			<button type="submit" id="login-button" (click)="login()?usuExits.show():usuNotExits.show()">Login</button>
+			<br>
+			<mdl-button (click)="modalCadastro.show()">cadastrar</mdl-button>
 		</form>
 		
 	</div> 
@@ -37,13 +38,76 @@
 
 </body>
 <mdl-dialog #modalCadastro [mdl-dialog-config]="{ 
-	styles:{'width' : '624px','height': 'auto' , 'padding' : '0'},
+	styles:{'width' : '900px','height': '450px' , 'padding' : '0'},
 	isModal:true,  
 	enterTransitionDuration: 400,
+	clickOutsideToClose: true,
+	leaveTransitionDuration: 400}">
+	<body style="height:450px; overflow: auto">
+	<br>
+	<!-- <form #f="ngForm"> -->
+		<h1 style="color: black">Cadastrar Empresa</h1>
+		<br>
+		<div class="input-group input-group-lg">
+			<span class="input-group-addon" id="sizing-addon1">Usuario</span>
+			<input type="text" class="form-control" name="usuario" [(ngModel)]="usu.usuario" placeholder="Nome" aria-describedby="sizing-addon1">
+			</div>
+		<br>
+		<div class="input-group input-group-lg">
+			<span class="input-group-addon" id="sizing-addon1">Contrasenha</span>
+			<input type="text" class="form-control" name="contrasenha" [(ngModel)]="usu.contrasenha" placeholder="Nome" aria-describedby="sizing-addon1">
+			</div>
+		<br>
+		<div class="input-group input-group-lg">
+			<span class="input-group-addon" id="sizing-addon1">Instituição</span>
+			<input type="text" class="form-control" name="instituicao" [(ngModel)]="perfil.instituicao" placeholder="Nome" aria-describedby="sizing-addon1">
+			</div>
+		<br>
+		<div class="input-group input-group-lg">
+			<span class="input-group-addon" id="sizing-addon1">CNPJ</span>
+			<input type="text" class="form-control" name="cnpj" [(ngModel)]="perfil.cnpj" placeholder="Nome" aria-describedby="sizing-addon1">
+			</div>
+		<br>
+		<div class="input-group input-group-lg">
+			<span class="input-group-addon" id="sizing-addon1">Tipo de Empresa</span>
+			<input type="text" class="form-control" name="tipoEmp" [(ngModel)]="perfil.tipoEmp" placeholder="Nome" aria-describedby="sizing-addon1">
+			</div>
+		<br>
+		<div class="input-group input-group-lg">
+			<span class="input-group-addon" id="sizing-addon1">Email</span>
+			<input type="text" class="form-control" name="email" [(ngModel)]="perfil.email" placeholder="Nome" aria-describedby="sizing-addon1">
+			</div>
+		<br>
+		<button type="submit" class="btn btn-outline-warning" (click)="onsubmit(); modalCadastro.close() ">Crear</button>  
+		<button type="submit" class="btn btn-outline-warning" (click)="modalCadastro.close()">cancelar</button>
+	<!-- </form> -->
+	</body>
+</mdl-dialog> 
+
+<mdl-dialog #usuNotExits [mdl-dialog-config]="{ 
+	styles:{'width' : '300px','height': '100px' , 'padding' : '0'},
+	isModal:true,  
+	enterTransitionDuration: 400,
+	clickOutsideToClose: true,
 	leaveTransitionDuration: 400}">
 	
-		<h1>Aplicativo licenciado</h1>
+		<h2 style="color: black">Usario ou Senha nao existe</h2>
 
+		<button type="submit" id="login-button" (click)="usuNotExits.close()">ok</button>
+	
+</mdl-dialog> 
+
+<mdl-dialog #usuExits [mdl-dialog-config]="{ 
+	styles:{'width' : '200px','height': '100px' , 'padding' : '0'},
+	isModal:true,  
+	enterTransitionDuration: 400,
+	clickOutsideToClose: true,
+	leaveTransitionDuration: 400}">
+	
+		<h2 style="color: black">Usario existe</h2>
+		<br>
+		<button type="submit" id="login-button" routerLink="/mainEmp" (click)="usuExits.close()">ok</button>
+	
 </mdl-dialog> 
 </html>
 

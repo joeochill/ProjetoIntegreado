@@ -1,4 +1,9 @@
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Location } from '@angular/common';
+
+import { PerfilEmp } from '../../model/perfilEmp.model';
+import { EmpresaService } from '../../service/empresa.service';
 
 @Component({
     moduleId: module.id,

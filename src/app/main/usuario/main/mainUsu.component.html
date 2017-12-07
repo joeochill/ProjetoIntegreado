@@ -48,7 +48,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
         <div class="w3-container">
          <h4 class="w3-center" >Meu Perfil</h4>
          <!-- <p style="text-align:center!important" > -->  
-             <img src="{{fullImagePath}}" style="height:106px;width:106px; border-radius:50%" class="w3-center">
+             <img src="assets/images/avatar3.png" style="height:106px;width:106px; border-radius:50%; margin:auto;display:block;text-align:center;" class="w3-center">
             <!-- </p> -->
          <hr>
          <p><i class="fa fa-pencil fa-fw w3-margin-right w3-text-theme"></i> Designer, UI</p>
@@ -143,45 +143,16 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
         </div>
       </div>
       
-      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-        <img [src]="fullImagePath" class="w3-left w3-circle w3-margin-right" style="width:60px">
+      <div class="w3-container w3-card w3-white w3-round w3-margin" *ngFor="let vaga of vagas"><br>
+        
         <span class="w3-right w3-opacity">1 min</span>
-        <h4>John Doe</h4><br>
+        <h4>{{vaga.titulo}}</h4><br>
         <hr class="w3-clear">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-          <div class="w3-row-padding" style="margin:0 -16px">
-            <div class="w3-half">
-              <img src="./template/lights.jpg" style="width:100%" alt="Northern Lights" class="w3-margin-bottom">
-            </div>
-            <div class="w3-half">
-              <img src="./template/nature.jpg" style="width:100%" alt="Nature" class="w3-margin-bottom">
-          </div>
-        </div>
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i> &nbsp;Postular</button> 
+        <p>{{vaga.descripcion}}</p>
+         
+        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"  (click)="pustularPosto.show()"><i class="fa fa-thumbs-up"></i> &nbsp;Postular</button> 
         <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i> &nbsp;Veja Detalhes</button> 
       </div>
-      
-      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-        <img src="./template/avatar5.png" class="w3-left w3-circle w3-margin-right" style="width:60px">
-        <span class="w3-right w3-opacity">16 min</span>
-        <h4>Jane Doe</h4><br>
-        <hr class="w3-clear">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i> &nbsp;Postular</button> 
-        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i> &nbsp;Veja Detalhes</button> 
-      </div>  
-
-      <div class="w3-container w3-card w3-white w3-round w3-margin"><br>
-        <img src="./template/avatar6.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
-        <span class="w3-right w3-opacity">32 min</span>
-        <h4>Angie Jane</h4><br>
-        <hr class="w3-clear">
-        <p>Have you seen this?</p>
-        <img src="./template/nature.jpg" style="width:100%" class="w3-margin-bottom">
-        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        <button type="button" class="w3-button w3-theme-d1 w3-margin-bottom"><i class="fa fa-thumbs-up"></i> &nbsp;Postular</button> 
-        <button type="button" class="w3-button w3-theme-d2 w3-margin-bottom"><i class="fa fa-comment"></i> &nbsp;Veja Detalhes</button> 
-      </div> 
       
     <!-- End Middle Column -->
     </div>
@@ -191,7 +162,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Open Sans", sans-serif}
       <div class="w3-card w3-round w3-white w3-center">
         <div class="w3-container">
           <p>Próximos Eventos:</p>
-          <img src="./template/forest.jpg" style="width:100%;">
+          <img src="assets/images/lectura.png" style="width:100%;">
           <p><strong>Lendo</strong></p>
           <p>sexta-feira 15:00</p>
           <p><button class="w3-button w3-block w3-theme-l4">Info</button></p>
@@ -247,4 +218,19 @@ function openNav() {
 
 
  
-</body></html>
+</body>
+
+<mdl-dialog #pustularPosto [mdl-dialog-config]="{ 
+	styles:{'width' : '400px','height': '150px' , 'padding' : '0'},
+	isModal:true,  
+	enterTransitionDuration: 400,
+	clickOutsideToClose: true,
+	leaveTransitionDuration: 400}">
+	
+		<h2 style="color: black">postulado com sucesso</h2>
+
+		<button type="submit" id="login-button" (click)="pustularPosto.close()">ok</button>
+	
+</mdl-dialog> 
+
+</html>

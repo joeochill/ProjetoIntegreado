@@ -1,7 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MdlModule } from '@angular-mdl/core';
+import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 
+import { EmpresaService } from './service/empresa.service'
 import { EventoEmpComponent } from './empresa/evento/eventoEmp.component'
 import { ExperenciaUsuComponent } from './usuario/experiencia/experenciaUsu.component'
 import { GroupUsuComponent } from './usuario/group/groupUsu.component'
@@ -20,7 +23,9 @@ import { VagasEmpComponent } from './empresa/vagas/vagasEmp.component'
     imports:[
         CommonModule,
         MainRoutingModule,
-        MdlModule
+        MdlModule,
+        FormsModule,
+        HttpModule
     ],
     declarations:[
         MainComponent,
@@ -47,6 +52,9 @@ import { VagasEmpComponent } from './empresa/vagas/vagasEmp.component'
         EventoEmpComponent,
         PerfilEmpComponent,
         VagasEmpComponent
+    ],
+    providers:[
+        EmpresaService
     ]
 })
 export class MainModule{}
